@@ -1,16 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".MainActivity"
+    android:paddingHorizontal="16dp">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentcont"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:layout_marginBottom="24dp"
+        >
 
-    </androidx.fragment.app.FragmentContainerView>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            >
+            <TextView
+                android:id="@+id/hi_erke"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/string_hi"
+                android:text="@string/hi_erke"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/welcome_bac"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="-7sp"
+                android:text="@string/welcome_bac"
+                android:textAppearance="@style/welcome_bac" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_not"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+    <android.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rounded_search"
+        android:iconifiedByDefault="false"
+        android:queryHint="Enter the name of a famous person"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/now_playing"
+            android:textAppearance="@style/second_text"
+            />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="see all"
+                android:textAppearance="@style/see_all"
+                android:lineSpacingExtra="4sp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow_right"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/avengars"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avengers - Infinity War"
+            android:layout_marginBottom="16dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2h29m • Action, adventure, sci-fi"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
