@@ -7,4 +7,5 @@ data class Movie(
     val name_origin: String,
     val rating: Double,
     val age_restriction: Int,
-    val genres: List)
+    val genres: List<String>
+)
