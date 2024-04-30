@@ -9,4 +9,8 @@
     <string name="now_playing">
     Now playing
     </string>
+    <string name="see_all">see all</string>
+    <string name="some_id">
+        4.8 (1.222)
+    </string>
 </resources>

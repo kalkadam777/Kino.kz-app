@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Kinokz" parent="Base.Theme.Kinokz" />
+    <style name="Theme.Kinokz" parent="Base.Theme.Kinokz" >
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
 </resources>
