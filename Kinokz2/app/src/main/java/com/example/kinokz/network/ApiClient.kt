@@ -12,7 +12,7 @@ object ApiClient {
             val request = chain.request()
 
             val newRequest = request.newBuilder()
-                .addHeader("X-Api-Key", "coOKb3xzdMMs6HjpihyYww==a4aqvDjq05qnRVXl")
+                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMDFjNjNmM2FkNGNiZjNmMjgwNWZjMmU2YTQ5ZmRiOCIsInN1YiI6IjY2MzBjMWNmNmEzMDBiMDEyNTYwOGQ0MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hz0AuYZq9O7MBOpn4Axfm3Q1rt9A59U4bXNVkhT0WQE")
                 .build()
 
             chain.proceed(newRequest)
@@ -23,7 +23,7 @@ object ApiClient {
         .build()
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.api-ninjas.com/v1/")
+        .baseUrl("https://api.themoviedb.org/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
