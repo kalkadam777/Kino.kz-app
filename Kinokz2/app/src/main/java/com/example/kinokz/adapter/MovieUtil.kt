@@ -4,15 +4,12 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.kinokz.model.Movie
 import com.example.kinokz.model.MovieResponse
 
-class MovieUtil : DiffUtil.ItemCallback<MovieResponse>() {
-    override fun areItemsTheSame(oldItem:MovieResponse, newItem: MovieResponse): Boolean {
-        val oldTitles = oldItem.results.map { it.title }
-        val newTitles = newItem.results.map { it.title }
-        return oldTitles == newTitles
-
+class MovieUtil : DiffUtil.ItemCallback<Movie>() {
+    override fun areItemsTheSame(oldItem:Movie, newItem: Movie): Boolean {
+        return oldItem.title == newItem.title
     }
 
-    override fun areContentsTheSame(oldItem: MovieResponse, newItem: MovieResponse): Boolean {
+    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem == newItem
     }
 

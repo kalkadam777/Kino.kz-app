@@ -4,13 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.historicalfigures.adapter.MovieUtil
+import com.example.kinokz.R
 import com.example.kinokz.databinding.MovieBinding
+import com.example.kinokz.model.Movie
 import com.example.kinokz.model.MovieResponse
 
 class MovieAdapter(
     private val onMovieRemoved: (MovieResponse) -> Unit
-) : ListAdapter <MovieResponse, MovieAdapter.ViewHolder>(MovieUtil()) {
+) : ListAdapter <Movie, MovieAdapter.ViewHolder>(MovieUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,9 +32,17 @@ class MovieAdapter(
         private val binding: MovieBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: MovieResponse) {
+        fun bind(movie: Movie) {
             with(binding) {
-                movieName.text = movie.results.map{ it.title }.toString()
+                Glide
+                    .with(root.context)
+                    .load("https://image.tmdb.org/t/p/original" + movie.posterPath)
+                    .placeholder(R.drawable.avengars)
+                    .into(movieImage)
+
+                movieName.text = movie.title
+                movieRelease.text = movie.releaseDate
+
             }
 
         }

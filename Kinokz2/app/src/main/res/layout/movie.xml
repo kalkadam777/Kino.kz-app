@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/movie_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:srcCompat="@drawable/avengars"
@@ -21,14 +21,15 @@
 
         <TextView
             android:id="@+id/movie_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:textColor="@color/white"
+            android:textAlignment="center"
             android:text="Avengers - Infinity War" />
 
         <TextView
-            android:id="@+id/genre"
+            android:id="@+id/movie_release"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2h29m • Action, adventure, sci-fi" />

@@ -2,8 +2,8 @@ package com.example.kinokz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.historicalfigures.fragment.MovieFragment
 import com.example.kinokz.databinding.ActivityMainBinding
+import com.example.kinokz.fragment.MovieFragment
 
 class MainActivity : AppCompatActivity() {
 
