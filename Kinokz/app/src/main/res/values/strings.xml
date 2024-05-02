@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Kino.kz</string>
+    <string name="hi_erke">
+        Hi, Erkebulan 👋
+    </string>
+    <string name="welcome_bac">
+        Welcome back
+    </string>
+    <string name="now_playing">
+    Now playing
+    </string>
+</resources>

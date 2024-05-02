@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="string_hi">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+    <style name="welcome_bac">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+    <style name="second_text">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+    <style name="see_all">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#FCC434</item>
+    </style>
+
+</resources>
