@@ -33,4 +33,19 @@
         <item name="android:textColor">#F2F2F2</item>
     </style>
 
+    <style name="avatar_2_th">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#FCC434</item>
+    </style>
+
+    <style name="gi_t_ng_phi">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#DEDEDE</item>
+    </style>
+
+    <style name="hour_29_min">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
 </resources>

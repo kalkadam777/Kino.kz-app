@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinokz.R
+import com.example.kinokz.model.ComingSoonSection
 import com.example.kinokz.model.GeneralSection
 import com.example.kinokz.model.HeaderSection
 import com.example.kinokz.model.NowPlayingSection
@@ -17,12 +18,14 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
         const val TYPE_NOW_PLAYING = 0
         const val TYPE_GENERAL = 1
         const val TYPE_HEADER = 2
+        const val TYPE_COMING_SOON = 3
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (data[position]) {
             is NowPlayingSection -> TYPE_NOW_PLAYING
             is HeaderSection -> TYPE_HEADER
+            is ComingSoonSection -> TYPE_COMING_SOON
             else -> TYPE_GENERAL
         }
     }
@@ -32,6 +35,7 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
         return when (viewType) {
             TYPE_NOW_PLAYING -> NowPlayingViewHolder(inflater.inflate(R.layout.now_playing_item, parent, false))
             TYPE_HEADER -> HeaderViewHolder(inflater.inflate(R.layout.header_item, parent, false))
+            TYPE_COMING_SOON -> ComingSoonViewHolder(inflater.inflate(R.layout.section_coming_soon, parent, false))
             else -> GeneralViewHolder(inflater.inflate(R.layout.general_item, parent, false))
         }
     }
@@ -42,6 +46,7 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
         when (holder) {
             is NowPlayingViewHolder -> holder.bind(data[position] as NowPlayingSection)
             is GeneralViewHolder -> holder.bind(data[position] as GeneralSection)
+            is ComingSoonViewHolder -> holder.bind(data[position] as ComingSoonSection)
         }
     }
 
@@ -65,6 +70,19 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
         fun bind(section: GeneralSection) {
             val title: TextView = itemView.findViewById(R.id.sectionTitle)
             title.text = section.title
+        }
+    }
+
+    class ComingSoonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+//        private val titleTextView: TextView = view.findViewById(R.id.sectionTitle)
+//        private val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewHorizontal)
+
+        fun bind(section: ComingSoonSection) {
+//            titleTextView.text = section.title
+            val recyclerView: RecyclerView = itemView.findViewById(R.id.recyclerViewHorizontal)
+            recyclerView.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+            recyclerView.adapter = ComingSoonMoviesAdapter(section.movies)
         }
     }
 }
