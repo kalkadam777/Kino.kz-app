@@ -12,6 +12,12 @@ import com.example.kinokz.model.GeneralSection
 import com.example.kinokz.model.HeaderSection
 import com.example.kinokz.model.NowPlayingSection
 import com.example.kinokz.model.Section
+import androidx.recyclerview.widget.ListAdapter
+import com.bumptech.glide.Glide
+import com.example.historicalfigures.adapter.MovieUtil
+import com.example.kinokz.databinding.MovieBinding
+import com.example.kinokz.model.Movie
+import com.example.kinokz.model.MovieResponse
 
 class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
@@ -81,8 +87,11 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
         fun bind(section: ComingSoonSection) {
 //            titleTextView.text = section.title
             val recyclerView: RecyclerView = itemView.findViewById(R.id.recyclerViewHorizontal)
-            recyclerView.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+            recyclerView.layoutManager =
+                LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
             recyclerView.adapter = ComingSoonMoviesAdapter(section.movies)
+
+
         }
     }
 }
