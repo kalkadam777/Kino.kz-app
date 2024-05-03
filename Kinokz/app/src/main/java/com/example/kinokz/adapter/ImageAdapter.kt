@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.kinokz.R
 
-class ImageAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
+class ImageAdapter(private val images: List<String>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageView:ImageView = view.findViewById(R.id.image)
     }
@@ -20,6 +21,7 @@ class ImageAdapter(private val images: List<Int>) : RecyclerView.Adapter<ImageAd
     override fun getItemCount(): Int = images.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imageView.setImageResource(images[position])
+        val imageUrl = "https://image.tmdb.org/t/p/original${images[position]}"
+        Glide.with(holder.imageView.context).load(imageUrl).into(holder.imageView)
     }
 }

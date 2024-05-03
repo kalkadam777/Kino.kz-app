@@ -15,9 +15,10 @@ import com.example.kinokz.model.Section
 import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import com.example.historicalfigures.adapter.MovieUtil
-import com.example.kinokz.databinding.MovieBinding
+//import com.example.kinokz.databinding.MovieBinding
 import com.example.kinokz.model.Movie
 import com.example.kinokz.model.MovieResponse
+import com.example.kinokz.model.PromoSection
 
 class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
@@ -25,6 +26,7 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
         const val TYPE_GENERAL = 1
         const val TYPE_HEADER = 2
         const val TYPE_COMING_SOON = 3
+        const val TYPE_PROMO = 4
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -32,6 +34,7 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
             is NowPlayingSection -> TYPE_NOW_PLAYING
             is HeaderSection -> TYPE_HEADER
             is ComingSoonSection -> TYPE_COMING_SOON
+            is PromoSection -> TYPE_PROMO
             else -> TYPE_GENERAL
         }
     }
@@ -42,6 +45,7 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
             TYPE_NOW_PLAYING -> NowPlayingViewHolder(inflater.inflate(R.layout.now_playing_item, parent, false))
             TYPE_HEADER -> HeaderViewHolder(inflater.inflate(R.layout.header_item, parent, false))
             TYPE_COMING_SOON -> ComingSoonViewHolder(inflater.inflate(R.layout.section_coming_soon, parent, false))
+            TYPE_PROMO -> PromoAdapter.PromoViewHolder(inflater.inflate(R.layout.promo_item, parent, false))
             else -> GeneralViewHolder(inflater.inflate(R.layout.general_item, parent, false))
         }
     }
@@ -53,6 +57,7 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
             is NowPlayingViewHolder -> holder.bind(data[position] as NowPlayingSection)
             is GeneralViewHolder -> holder.bind(data[position] as GeneralSection)
             is ComingSoonViewHolder -> holder.bind(data[position] as ComingSoonSection)
+            is PromoAdapter.PromoViewHolder -> holder.bind((data[position] as PromoSection).promotions[0])
         }
     }
 
@@ -82,7 +87,7 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
     class ComingSoonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 //        private val titleTextView: TextView = view.findViewById(R.id.sectionTitle)
-//        private val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewHorizontal)
+        private val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewHorizontal)
 
         fun bind(section: ComingSoonSection) {
 //            titleTextView.text = section.title

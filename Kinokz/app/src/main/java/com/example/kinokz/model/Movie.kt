@@ -1,8 +1,13 @@
 package com.example.kinokz.model
 
+import com.google.gson.annotations.SerializedName
+
+
 data class Movie(
-    val title: String,
-    val genre: String,
-    val releaseDate: String,
-    val imageUrl: Int
+    val id:String,
+    val title:String,
+    val overview:String,
+    @SerializedName("vote_average") val voteAverage:String,
+    @SerializedName("poster_path") val posterPath:String,
+    @SerializedName("release_date") val releaseDate:String
 )

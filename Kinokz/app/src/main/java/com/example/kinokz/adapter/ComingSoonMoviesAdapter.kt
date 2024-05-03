@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kinokz.R
 import com.example.kinokz.model.Movie
+import com.example.kinokz.model.Movie2
 
-class ComingSoonMoviesAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<ComingSoonMoviesAdapter.MovieViewHolder>() {
+class ComingSoonMoviesAdapter(private val movies: List<Movie2>) : RecyclerView.Adapter<ComingSoonMoviesAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val movieImage: ImageView = view.findViewById(R.id.movieImage)
@@ -18,7 +19,7 @@ class ComingSoonMoviesAdapter(private val movies: List<Movie>) : RecyclerView.Ad
         private val movieGenre: TextView = view.findViewById(R.id.movieGenre)
         private val movieReleaseDate: TextView = view.findViewById(R.id.movieReleaseDate)
 
-        fun bind(movie: Movie) {
+        fun bind(movie: Movie2) {
             // Здесь можно использовать библиотеку для загрузки изображений, например, Glide или Picasso
             Glide.with(itemView)
                 .load(movie.imageUrl) // Или используйте movie.imageResId для локальных ресурсов

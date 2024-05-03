@@ -17,4 +17,5 @@
     <string name="adventure_sci_fi">Adventure, Sci-fi</string>
     <string name="data">20.12.2022</string>
     <string name="coming_soon">Coming soon</string>
+    <string name="promo"><![CDATA[Promo & Discount]]></string>
 </resources>

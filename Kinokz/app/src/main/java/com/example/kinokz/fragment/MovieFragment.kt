@@ -1,9 +1,7 @@
 //package com.example.kinokz.fragment
 //
-//<<<<<<< HEAD
 //class MovieFragment {
 //}
-//=======
 //import android.os.Bundle
 //import android.util.Log
 //import android.view.LayoutInflater
@@ -12,7 +10,7 @@
 //import android.widget.Toast
 //import androidx.fragment.app.Fragment
 //import com.example.kinokz.adapter.MovieAdapter
-//import com.example.kinokz.databinding.MainpageBinding
+////import com.example.kinokz.databinding.MainpageBinding
 //import com.example.kinokz.model.Movie
 //import com.example.kinokz.model.MovieResponse
 //import com.example.kinokz.network.ApiClient
@@ -22,8 +20,8 @@
 //
 //class MovieFragment : Fragment() {
 //
-//    private var _binding: MainpageBinding? = null
-//    private val binding get() = _binding!!
+////    private var _binding: MainpageBinding? = null
+////    private val binding get() = _binding!!
 //
 //    private var adapter: MovieAdapter? = null
 //
@@ -35,19 +33,19 @@
 //        inflater: LayoutInflater, container: ViewGroup?,
 //        savedInstanceState: Bundle?
 //    ): View {
-//        _binding = MainpageBinding.inflate(inflater, container, false)
-//        return binding.root
+////        _binding = MainpageBinding.inflate(inflater, container, false)
+////        return binding.root
 //    }
 //
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        super.onViewCreated(view, savedInstanceState)
 //
-//        adapter = MovieAdapter { movie ->
-//            // Обработка клика на фильм
-//            Toast.makeText(context, movie.results.map { it.title }.toString(), Toast.LENGTH_SHORT).show()
-//        }
+////        adapter = MovieAdapter { movie ->
+////            // Обработка клика на фильм
+////            Toast.makeText(context, movie.results.map { it.title }.toString(), Toast.LENGTH_SHORT).show()
+////        }
 //
-//        binding.recyclerView.adapter = adapter
+////        binding.recyclerView.adapter = adapter
 //
 //        // Вызываем метод загрузки фильмов при создании фрагмента
 //        fetchMovies()
@@ -60,7 +58,7 @@
 //                    val movieResponse = response.body()
 //                    movieResponse?.let {
 //                        Log.d("MovieFragment", "Movies successfully retrieved: ${it.results.size}")
-//                        adapter?.submitList(it.results.map{it})
+////                        adapter?.submitList(it.results.map{it})
 //                    }
 //                } else {
 //                    val errorMessage = "Error: ${response.code()} ${response.message()}"
@@ -79,11 +77,4 @@
 //
 //}
 //
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
 //}
-//
-//
-//>>>>>>> origin/abukhanifa
