@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinokz.adapter.MovieAdapter
 import com.example.kinokz.databinding.ActivityMainBinding
-import com.example.kinokz.fragment.NowPlayingFragment
+//import com.example.kinokz.fragment.NowPlayingFragment
 import com.example.kinokz.model.ComingSoonSection
 import com.example.kinokz.model.GeneralSection
 import com.example.kinokz.model.HeaderSection
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
                 if (response.isSuccessful) {
                     val movies = response.body()?.results ?: emptyList()
-                    val movieIds = movies.map { it.posterPath }
+//                    val movieIds = movies.map { it.posterPath }
                     val comingSoonMovies = listOf(
                         Movie2("Avatar 2: The Way Of Water ", "Adventure, Sci-fi", "20.12.2022", R.drawable.avatar),
                         Movie2("Film 2", "Genre 2", "22.01.2023", R.drawable.quant),
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     val sections = listOf(
                         HeaderSection("Cinema"),
-                        NowPlayingSection("Now Playing", movieIds),
+                        NowPlayingSection("Now Playing", movies),
                         ComingSoonSection("Coming Soon", comingSoonMovies),
                         PromoSection("Promo & Discount", listOf(Promotion("Get 20% off on all tickets this Friday!", R.drawable.promo)))
                     )

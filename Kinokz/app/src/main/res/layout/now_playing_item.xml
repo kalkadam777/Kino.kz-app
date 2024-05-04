@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/black"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,59 +53,15 @@
         android:id="@+id/recyclerViewHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" />
+        android:orientation="horizontal"
+        android:paddingBottom="16dp"/>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Avengers - Infinity War"
-            android:textAppearance="@style/avengers_in"
-            android:layout_marginBottom="6dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/h29m_action"
-            android:text="2h29m • Action, adventure, sci-fi"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/star7"
-                android:layout_gravity="center_vertical"/>
-
-            <TextView
-                android:id="@+id/some_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/some_id"
-                android:textAppearance="@style/some_id"
-                android:gravity="center_vertical"
-                android:layout_marginStart="4dp"
-                />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sel3"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"/>
-    </LinearLayout>
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/sel3"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="16dp"/>-->
 
 </LinearLayout>

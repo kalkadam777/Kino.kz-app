@@ -3,6 +3,7 @@ package com.example.kinokz.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -87,8 +88,6 @@ class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<Recyc
     class ComingSoonViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 //        private val titleTextView: TextView = view.findViewById(R.id.sectionTitle)
-        private val recyclerView: RecyclerView = view.findViewById(R.id.recyclerViewHorizontal)
-
         fun bind(section: ComingSoonSection) {
 //            titleTextView.text = section.title
             val recyclerView: RecyclerView = itemView.findViewById(R.id.recyclerViewHorizontal)

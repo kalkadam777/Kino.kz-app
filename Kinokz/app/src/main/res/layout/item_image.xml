@@ -1,10 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="310dp"
-    android:layout_height="440dp"
-    android:layout_gravity="center"
-    android:id="@+id/image"
-    android:padding="8dp"
-    android:src="@drawable/avengars"
-    android:scaleType="centerCrop" />
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="310dp"
+        android:layout_height="440dp"
+        android:layout_gravity="center"
+        android:id="@+id/image"
+        android:src="@drawable/rebel"
+        android:background="@drawable/movie_img_border"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Rebel Moon - Part Two: The Scargiver"
+            android:textAlignment="center"
+            android:textAppearance="@style/avengers_in"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="16dp"
+            />
+
+        <TextView
+            android:id="@+id/desc_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/h29m_action"
+            android:layout_gravity="center"
+            android:text="2h29m • Action, adventure, sci-fi"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star7"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/some_id"
+                android:textAppearance="@style/some_id"
+                android:gravity="center_vertical"
+                android:layout_marginStart="4dp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+
 
