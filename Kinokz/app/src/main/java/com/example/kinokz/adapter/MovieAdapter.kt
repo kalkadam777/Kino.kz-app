@@ -3,7 +3,6 @@ package com.example.kinokz.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,12 +12,7 @@ import com.example.kinokz.model.GeneralSection
 import com.example.kinokz.model.HeaderSection
 import com.example.kinokz.model.NowPlayingSection
 import com.example.kinokz.model.Section
-import androidx.recyclerview.widget.ListAdapter
-import com.bumptech.glide.Glide
-import com.example.historicalfigures.adapter.MovieUtil
 //import com.example.kinokz.databinding.MovieBinding
-import com.example.kinokz.model.Movie
-import com.example.kinokz.model.MovieResponse
 import com.example.kinokz.model.PromoSection
 
 class MovieAdapter(private val data: List<Section>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -7,6 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MovieService {
-    @GET("3/movie/popular")
+    @GET("3/movie/now_playing")
     fun fetchMovieList(): Call<MovieResponse>
+
+    @GET("3/movie/upcoming")
+    fun fetchMovieList2(): Call<MovieResponse>
 }
