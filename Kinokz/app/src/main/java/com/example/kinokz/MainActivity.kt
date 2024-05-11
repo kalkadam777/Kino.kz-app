@@ -2,6 +2,8 @@ package com.example.kinokz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinokz.adapter.MovieAdapter
@@ -21,6 +23,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
     private lateinit var mainRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +31,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        setupNavigation()
+
         mainRecyclerView = binding.mainRecyclerView
         mainRecyclerView.layoutManager = LinearLayoutManager(this)
 
         val client = ApiClient.instance
 
-        // Выполняем первый запрос
+//         Выполняем первый запрос
         val responseNowPlaying = client.fetchMovieList()
         responseNowPlaying.enqueue(object : Callback<MovieResponse> {
             override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
@@ -52,7 +57,11 @@ class MainActivity : AppCompatActivity() {
                                     ComingSoonSection("Coming Soon", upcomingMovies),
                                     PromoSection("Promo & Discount", listOf(Promotion("Get 20% off on all tickets this Friday!", R.drawable.promo)))
                                 )
-                                mainRecyclerView.adapter = MovieAdapter(sections)
+                                val adapter = MovieAdapter(onMovieClick = {
+                                    // Обработка нажатия на элемент списка
+                                })
+                                adapter.submitList(sections)
+                                binding.mainRecyclerView.adapter = adapter
                             } else {
                                 // Обработка ошибки API
                             }
@@ -72,31 +81,17 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+//    private fun setupNavigation() {
+//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//        navController = navHostFragment.navController
+//
+//        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+//        navGraph.setStartDestination(R.id.movie_list_fragment)
+//
+//        navController.graph = navGraph
+//    }
 }
 
-
-
-
-//        val promoList = listOf(
-//            Promotion("Get 20% off on all tickets this Friday!", R.drawable.promo),
-//        )
-//
-//        val mainRecyclerView: RecyclerView = findViewById(R.id.mainRecyclerView)
-//        mainRecyclerView.layoutManager = LinearLayoutManager(this)
-//
-//        val sections = listOf(
-//            HeaderSection("Cinema"),
-////            NowPlayingSection("Now Playing", movieIds),
-////            ComingSoonSection("Coming Soon", comingSoonMovies),
-//            PromoSection("Promo & Discount", promoList)
-//        )
-//        mainRecyclerView.adapter = MovieAdapter(sections)
-
-
-//        if (savedInstanceState == null) {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragment_container, NowPlayingFragment())
-//                .commit()
-//        }
 
 

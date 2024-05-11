@@ -8,14 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kinokz.R
+import com.example.kinokz.databinding.PromoItemBinding
 import com.example.kinokz.model.PromoSection
 import com.example.kinokz.model.Promotion
 
 class PromoAdapter(private val promotions: List<Promotion>) : RecyclerView.Adapter<PromoAdapter.PromoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PromoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.promo_item, parent, false)
-        return PromoViewHolder(view)
+        val binding = PromoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PromoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: PromoViewHolder, position: Int) {
@@ -24,13 +25,14 @@ class PromoAdapter(private val promotions: List<Promotion>) : RecyclerView.Adapt
 
     override fun getItemCount(): Int = promotions.size
 
-    class PromoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val imageView: ImageView = view.findViewById(R.id.promo_img)
-//        private val textView: TextView = view.findViewById(R.id.promoText)
-
+    class PromoViewHolder(private val binding: PromoItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(promotion: Promotion) {
-//            textView.text = promotion.description
-            Glide.with(itemView.context).load(promotion.imageUrl).into(imageView)
+            with(binding) {
+                Glide
+                    .with(itemView.context)
+                    .load(promotion.imageUrl)
+                    .into(promoImg)
+            }
         }
     }
 }

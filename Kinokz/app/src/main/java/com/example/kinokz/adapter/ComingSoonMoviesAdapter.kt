@@ -5,41 +5,40 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kinokz.R
+import com.example.kinokz.databinding.ComingSoonMovieItemBinding
+import com.example.kinokz.diffUtil.ComingSoonDiffCallback
 import com.example.kinokz.model.Movie
 import com.example.kinokz.model.Movie2
 
-class ComingSoonMoviesAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<ComingSoonMoviesAdapter.MovieViewHolder>() {
+class ComingSoonMoviesAdapter : ListAdapter<Movie, ComingSoonMoviesAdapter.MovieViewHolder>(ComingSoonDiffCallback()) {
 
-    class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val movieImage: ImageView = view.findViewById(R.id.movieImage)
-        private val movieTitle: TextView = view.findViewById(R.id.movieTitle)
-        private val movieGenre: TextView = view.findViewById(R.id.movieGenre)
-        private val movieReleaseDate: TextView = view.findViewById(R.id.movieReleaseDate)
+    class MovieViewHolder(private val binding: ComingSoonMovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: Movie) {
-            // Здесь можно использовать библиотеку для загрузки изображений, например, Glide или Picasso
-            val imageUrl = "https://image.tmdb.org/t/p/original${movie.posterPath}"
-            Glide.with(movieImage.context).
-            load(imageUrl).
-            into(movieImage)
+            with(binding) {
+                val imageUrl = "https://image.tmdb.org/t/p/original${movie.posterPath}"
 
-            movieTitle.text = movie.title
+                Glide.with(movieImage.context).
+                load(imageUrl).
+                into(movieImage)
 
-            movieReleaseDate.text = movie.releaseDate
+                movieTitle.text = movie.title
+                movieReleaseDate.text = movie.releaseDate
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.coming_soon_movie_item, parent, false)
-        return MovieViewHolder(view)
+        val binding = ComingSoonMovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MovieViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movies[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = movies.size
 }

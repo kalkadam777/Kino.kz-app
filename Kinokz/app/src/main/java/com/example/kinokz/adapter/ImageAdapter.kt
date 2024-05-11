@@ -5,42 +5,48 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.kinokz.R
+import com.example.kinokz.databinding.ItemImageBinding
+import com.example.kinokz.databinding.NowPlayingItemBinding
+import com.example.kinokz.diffUtil.ImageDiffCallback
 import com.example.kinokz.model.Movie
 import com.example.kinokz.model.Movie2
 
-class ImageAdapter(private val images: List<Movie>) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val imageView: ImageView = view.findViewById(R.id.image)
-        private val titleTextView: TextView = view.findViewById(R.id.main_title)
-        private val overviewTextView: TextView = view.findViewById(R.id.desc_text)
-        private val ratingTextView: TextView = view.findViewById(R.id.rating)
-
+class ImageAdapter(
+    private val onMovieClick: (Movie) -> Unit
+) : ListAdapter<Movie, ImageAdapter.ViewHolder>(ImageDiffCallback()){
+    class ViewHolder(
+        val binding: ItemImageBinding,
+        val onMovieClick: (Movie) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
-            titleTextView.text = movie.title
-            overviewTextView.text = movie.releaseDate
-            ratingTextView.text = movie.voteAverage
-
-            val imageUrl = "https://image.tmdb.org/t/p/original${movie.posterPath}"
-            Glide.with(imageView.context).
+            with(binding) {
+                val imageUrl = "https://image.tmdb.org/t/p/original${movie.posterPath}"
+                Glide.with(image.context).
                 load(imageUrl).
-                into(imageView)
+                into(image)
+
+                mainTitle.text = movie.title
+                descText.text = movie.releaseDate
+                rating.text = movie.voteAverage
+
+                root.setOnClickListener(){
+                    onMovieClick(movie)
+                }
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
-        return ViewHolder(view)
+        val binding = ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding, onMovieClick)
     }
 
-    override fun getItemCount(): Int = images.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val imageUrl = "https://image.tmdb.org/t/p/original${images[position]}"
-//        Glide.with(holder.imageView.context).load(imageUrl).into(holder.imageView)
-        holder.bind(images[position])
+        holder.bind(getItem(position))
     }
 }
