@@ -33,6 +33,7 @@
         <item name="android:textColor">#F2F2F2</item>
     </style>
 
+
     <style name="avatar_2_th">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#FCC434</item>
@@ -45,6 +46,36 @@
 
     <style name="hour_29_min">
         <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="movie_genre">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#CDCDCD</item>
+    </style>
+
+    <style name="action_adve">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="storyline">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="storyline_text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="date">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#BFBFBF</item>
+    </style>
+
+    <style name="review">
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">#F2F2F2</item>
     </style>
 

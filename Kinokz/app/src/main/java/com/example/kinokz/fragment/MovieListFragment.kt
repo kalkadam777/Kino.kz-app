@@ -1,16 +1,14 @@
 package com.example.kinokz.fragment
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kinokz.R
-import com.example.kinokz.adapter.ImageAdapter
 import com.example.kinokz.adapter.MovieAdapter
 import com.example.kinokz.databinding.FragmentMovieListBinding
 import com.example.kinokz.model.ComingSoonSection
@@ -108,7 +106,13 @@ class MovieListFragment : Fragment() {
          * transition to movie details using Jetpack Navigation
          */
 
-        val direction = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(movie.title)
+        val direction = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(
+            movie.title,
+            movie.posterPath,
+            movie.voteAverage,
+            movie.overview,
+            movie.releaseDate
+            )
         findNavController().navigate(direction)
 
     }

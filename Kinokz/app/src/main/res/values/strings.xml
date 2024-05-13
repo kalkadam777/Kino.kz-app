@@ -20,4 +20,7 @@
     <string name="promo"><![CDATA[Promo & Discount]]></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="storyline">Storyline</string>
+    <string name="storyline_text">As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos....</string>
+    <string name="back_button_desc">Back</string>
 </resources>

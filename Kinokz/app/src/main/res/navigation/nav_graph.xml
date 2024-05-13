@@ -22,8 +22,19 @@
         >
         <argument
             android:name="movieTitle"
-            app:argType="string"
-            />
+            app:argType="string" />
+        <argument
+            android:name="movieImage"
+            app:argType="string" />
+        <argument
+            android:name="movieRating"
+            app:argType="string" />
+        <argument
+            android:name="movieOverview"
+            app:argType="string" />
+        <argument
+            android:name="movieReleaseDate"
+            app:argType="string" />
     </fragment>
 
 </navigation>
