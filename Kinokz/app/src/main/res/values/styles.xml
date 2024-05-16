@@ -79,4 +79,19 @@
         <item name="android:textColor">#F2F2F2</item>
     </style>
 
+    <style name="mbooking_he">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="enjoy_your_">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="by_sign_in">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#B3B3B3</item>
+    </style>
+
 </resources>
