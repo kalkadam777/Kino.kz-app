@@ -5,35 +5,36 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kinokz.R
 import com.example.kinokz.adapter.MovieAdapter
 import com.example.kinokz.databinding.FragmentMovieListBinding
-import com.example.kinokz.model.ComingSoonSection
-import com.example.kinokz.model.HeaderSection
+import com.example.kinokz.R.navigation.nav_graph
 import com.example.kinokz.model.Movie
-import com.example.kinokz.model.MovieResponse
-import com.example.kinokz.model.NowPlayingSection
-import com.example.kinokz.model.PromoSection
-import com.example.kinokz.model.Promotion
-import com.example.kinokz.network.ApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.kinokz.viewmodel.ComingSoonViewModel
+import com.example.kinokz.viewmodel.MovieListState
+import com.example.kinokz.viewmodel.NowPlayingViewModel
 
 class MovieListFragment : Fragment() {
     private var _binding: FragmentMovieListBinding? = null
     private val binding get() = _binding!!
-//    private var adapter: ImageAdapter? = null
     private var adapter: MovieAdapter? = null
+    private val nowPlayingViewModel: NowPlayingViewModel by viewModels()
+    private val comingSoonViewModel: ComingSoonViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding =  FragmentMovieListBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieListBinding.inflate(inflater, container, false)
         Log.d("MovieListFragment", "onCreateView called")
         return binding.root
     }
@@ -41,80 +42,82 @@ class MovieListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("MovieListFragment", "onViewCreated called")
-        adapter = MovieAdapter (
-            onMovieClick = {
-                handleMovieClick(it)
-            },
-        )
+
+        adapter = MovieAdapter(onMovieClick = { handleMovieClick(it) })
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.mainRecyclerView.adapter = adapter
 
-        fetchMovieList(adapter!!)
+        // Observe Now Playing movies
+        observeNowPlayingViewModel()
 
-//        binding.recyclerView.adapter = adapter
-//
-//        viewModel.fetchOfferList()
-//
-//        viewModel.movieListState.observe(viewLifecycleOwner){ state ->
-//            when(state) {
-//                is MovieListState.Success -> adapter?.submitList(state.items)
-//                is MovieListState.Loading -> {
-//                    with(binding){
-//                        progressBar.isVisible = state.isLoading
-//                        recyclerView.isVisible = !state.isLoading
-//                    }
-//                }
-//                is MovieListState.Error -> {
-//                    AlertDialog.Builder(requireContext())
-//                        .setTitle(R.string.error_title)
-//                        .setMessage(state.message ?: getString(R.string.error_message))
-//                        .show()
-//                }
-//            }
-//        }
+        // Fetch Now Playing movies
+        nowPlayingViewModel.fetchMovieList()
 
+        // Observe Coming Soon movies
+        observeComingSoonViewModel()
+
+        // Fetch Coming Soon movies
+        comingSoonViewModel.fetchMovieList2()
     }
 
-    private fun fetchMovieList(adapter: MovieAdapter) {
-        ApiClient.instance.fetchMovieList().enqueue(object : Callback<MovieResponse> {
-            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                Log.d("API", "onResponse called, success: ${response.isSuccessful}")
-                if (response.isSuccessful) {
-                    val movies = response.body()?.results ?: emptyList()
-                    val sections = listOf(
-                        HeaderSection("Cinema"),
-                        NowPlayingSection("Now Playing", movies),
-                        ComingSoonSection("Coming Soon", emptyList()),  // Update as needed
-                        PromoSection("Promo & Discount", listOf(Promotion("Get 20% off on all tickets this Friday!", R.drawable.promo)))
-                    )
-                    adapter.submitList(sections)
-                } else {
-                    Log.e("API", "Error: ${response.errorBody()?.string()}")
-                    // Handle error
+    private fun observeNowPlayingViewModel() {
+        nowPlayingViewModel.movieListState.observe(viewLifecycleOwner, Observer { state ->
+            when (state) {
+                is MovieListState.Success -> {
+                    adapter?.submitList(state.items)
+                    binding.progressBar.isVisible = false
+                    binding.mainRecyclerView.isVisible = true
                 }
-            }
+                is MovieListState.Loading -> {
+                    binding.progressBar.isVisible = state.isLoading
+                    binding.mainRecyclerView.isVisible = !state.isLoading
+                }
+                is MovieListState.Error -> {
+                    binding.progressBar.isVisible = false
+                    binding.mainRecyclerView.isVisible = true
 
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                Log.e("API", "onFailure called: ${t.message}")
-                println("HttpResponse $t")
+                }
             }
         })
     }
 
-    private fun handleMovieClick(movie: Movie){
-        /**
-         * transition to movie details using Jetpack Navigation
-         */
+    private fun observeComingSoonViewModel() {
+        comingSoonViewModel.movieListState.observe(viewLifecycleOwner, Observer { state ->
+            when (state) {
+                is MovieListState.Success -> {
+                    adapter?.submitList(state.items)
+                    binding.progressBar.isVisible = false
+                    binding.mainRecyclerView.isVisible = true
+                }
+                is MovieListState.Loading -> {
+                    binding.progressBar.isVisible = state.isLoading
+                    binding.mainRecyclerView.isVisible = !state.isLoading
+                }
+                is MovieListState.Error -> {
+                    binding.progressBar.isVisible = false
+                    binding.mainRecyclerView.isVisible = true
 
+                }
+            }
+        })
+    }
+
+    private fun handleMovieClick(movie: Movie) {
         val direction = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(
+            movie.id,
             movie.title,
             movie.posterPath,
             movie.voteAverage,
             movie.overview,
             movie.releaseDate
-            )
+        )
         findNavController().navigate(direction)
 
     }
+    }
 
-}
+
+
+
+
+

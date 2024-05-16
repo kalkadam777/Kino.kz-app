@@ -23,4 +23,6 @@
     <string name="storyline">Storyline</string>
     <string name="storyline_text">As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos....</string>
     <string name="back_button_desc">Back</string>
+    <string name="error_message">Error!</string>
+    <string name="error_title">Error\n</string>
 </resources>
