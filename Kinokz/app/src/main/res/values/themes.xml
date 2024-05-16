@@ -3,9 +3,17 @@
     <style name="Base.Theme.Kinokz" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="bottomNavigationStyle">@style/CustomBottomNavigationStyle</item>
     </style>
 
     <style name="Theme.Kinokz" parent="Base.Theme.Kinokz" >
         <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+    <style name="CustomBottomNavigationStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@drawable/bottom_nav_colors</item>
+        <item name="itemTextColor">@drawable/bottom_nav_colors</item>
+        <item name="itemRippleColor">@android:color/transparent</item>
+        <item name="backgroundTint">@color/bottom_nav_background</item>
     </style>
 </resources>

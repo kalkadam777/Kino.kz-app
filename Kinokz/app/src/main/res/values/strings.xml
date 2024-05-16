@@ -23,6 +23,5 @@
     <string name="storyline">Storyline</string>
     <string name="storyline_text">As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos....</string>
     <string name="back_button_desc">Back</string>
-    <string name="error_message">Error!</string>
-    <string name="error_title">Error\n</string>
+    <string name="by_sign_in_or_sign_up_you_agree_to_our_terms_of_service_and_privacy_policy">By sign in or sign up, you agree to our Terms of Service and Privacy Policy</string>
 </resources>

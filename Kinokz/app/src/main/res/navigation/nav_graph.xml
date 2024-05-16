@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/movie_list_fragment">
 
@@ -39,5 +40,32 @@
             android:name="movieReleaseDate"
             app:argType="string" />
     </fragment>
+
+    <fragment android:id="@+id/login_fragment"
+        android:name="com.example.kinokz.fragment.LoginFragment">
+
+        <action
+            android:id="@+id/action_login_fragment_to_movie_list_fragment"
+            app:destination="@id/movie_list_fragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_ticket"
+        android:name="com.example.kinokz.fragment.TicketFragment"
+        android:label="Ticket"
+        tools:layout="@layout/fragment_ticket" />
+
+    <fragment
+        android:id="@+id/navigation_movie"
+        android:name="com.example.kinokz.fragment.MovieFragment"
+        android:label="Movie"
+        tools:layout="@layout/fragment_movie" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.kinokz.fragment.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>
