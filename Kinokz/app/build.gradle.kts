@@ -39,6 +39,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -71,5 +72,7 @@ dependencies {
 
 // Kotlin Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
+
+
 
 }
