@@ -11,15 +11,16 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class ComingSoonViewModel : ViewModel() {
+
+class MovieListViewModel : ViewModel() {
     private val _movieListState = MutableLiveData<MovieListState>()
     val movieListState: LiveData<MovieListState> get() = _movieListState
 
     init {
-        fetchMovieList2()
+        fetchMovieList()
     }
 
-    fun fetchMovieList2() {
+    fun fetchMovieList() {
         _movieListState.value = MovieListState.Loading(true)
 
         viewModelScope.launch {

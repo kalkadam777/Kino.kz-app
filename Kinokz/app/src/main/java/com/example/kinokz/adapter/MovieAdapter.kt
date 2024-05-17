@@ -32,6 +32,9 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit): ListAdapter<Secti
         const val TYPE_PROMO = 4
     }
 
+    private var items: List<Any> = emptyList()
+
+
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is NowPlayingSection -> TYPE_NOW_PLAYING
