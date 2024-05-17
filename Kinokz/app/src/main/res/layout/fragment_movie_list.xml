@@ -7,17 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.MovieListFragment">
 
-    <android.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/shape_rounded_search"
-        android:iconifiedByDefault="false"
-        android:queryHint="Enter the name of a famous person"
-
-        />
 
     <ProgressBar
         android:id="@+id/progress_bar"

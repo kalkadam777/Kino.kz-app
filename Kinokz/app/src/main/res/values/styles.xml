@@ -114,4 +114,19 @@
         <item name="android:textColor">#F2F2F2</item>
     </style>
 
+    <style name="my_ticket2">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="avengers_in1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="date_time">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
 </resources>
