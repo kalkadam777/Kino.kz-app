@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="10dp"
+    android:background="@color/gray"
+    android:padding="10dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/img_movie"
+        android:layout_width="99dp"
+        android:layout_height="138dp"
+        tools:src="@drawable/avengers123"
+        android:layout_marginEnd="16dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            tools:text="Kingdom of the Planet of the Apes"
+            android:textAppearance="@style/avengers_in1"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/clock2"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+                />
+
+            <TextView
+                android:id="@+id/movie_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="14h15’ • 16.12.2022"
+                android:textAppearance="@style/date_time"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="4dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/video"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="8dp"
+
+                />
+            <TextView
+                android:id="@+id/movieGenre"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Action, Sci-fi"
+                android:textAppearance="@style/gi_t_ng_phi"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star7"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.0 (982)"
+                android:textAppearance="@style/some_id_2"
+                android:gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>

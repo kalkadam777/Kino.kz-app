@@ -3,6 +3,7 @@ package com.example.kinokz.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -33,6 +34,7 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit): ListAdapter<Secti
     }
 
     private var items: List<Any> = emptyList()
+    private var originalList: List<Section> = emptyList()
 
 
     override fun getItemViewType(position: Int): Int {
@@ -78,6 +80,7 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit): ListAdapter<Secti
             is PromoAdapter.PromoViewHolder -> holder.bind((getItem(position) as PromoSection).promotions[0])
         }
     }
+
 
     class HeaderViewHolder(private val binding: HeaderItemBinding) : RecyclerView.ViewHolder(binding.root) {
 //        fun bind(section: HeaderSection) {
