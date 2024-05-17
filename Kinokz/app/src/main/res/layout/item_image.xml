@@ -36,7 +36,7 @@
         <TextView
             android:id="@+id/main_title"
             android:layout_width="320dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:text="Rebel Moon - Part Two: The Scargiver"
             android:textAlignment="center"
             android:textAppearance="@style/avengers_in"
@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/h29m_action"
             android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
             android:text="2h29m • Action, adventure, sci-fi"/>
 
         <LinearLayout

@@ -5,28 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kinokz.R
 import com.example.kinokz.adapter.ComingSoonMoviesAdapter
-import com.example.kinokz.adapter.ImageAdapter
 import com.example.kinokz.adapter.MovieAdapter
+import com.example.kinokz.adapter.MovieSectionAdapter
 import com.example.kinokz.databinding.FragmentMovieBinding
-import com.example.kinokz.model.MovieResponse
-import com.example.kinokz.network.ApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.kinokz.viewmodel.MovieViewModel
 
 class MovieFragment : Fragment() {
 
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
 
-
-    private lateinit var movieAdapter: MovieAdapter
-    private lateinit var imageAdapter: ImageAdapter
+    private lateinit var movieAdapter: MovieSectionAdapter
     private lateinit var comingSoonMoviesAdapter: ComingSoonMoviesAdapter
-    private val client = ApiClient.instance
+    private lateinit var viewModel: MovieViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,54 +31,38 @@ class MovieFragment : Fragment() {
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
-//        binding.recyclerViewMovies.adapter = movieAdapter
-//        binding.recyclerViewMovies.layoutManager = LinearLayoutManager(context)
+        movieAdapter = MovieSectionAdapter { movie -> /* Handle movie click */ }
+        comingSoonMoviesAdapter = ComingSoonMoviesAdapter()
 
-//        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
-//            when (checkedId) {
-//                R.id.radioNowPlaying -> loadNowPlayingMovies()
-//                R.id.radioComingSoon -> loadComingSoonMovies()
-//            }
-//        }
-//        loadNowPlayingMovies()
+        binding.recyclerViewMovies.layoutManager = GridLayoutManager(context, 2)
+        // Устанавливаем начальное состояние
+        binding.radioNowPlaying.isChecked = true
+        binding.recyclerViewMovies.adapter = movieAdapter
 
+        viewModel.nowPlayingMovies.observe(viewLifecycleOwner) { movies ->
+            movieAdapter.submitList(movies)
+        }
+
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.radioNowPlaying -> {
+                    binding.recyclerViewMovies.adapter = movieAdapter
+                    viewModel.nowPlayingMovies.observe(viewLifecycleOwner) { movies ->
+                        movieAdapter.submitList(movies)
+                    }
+                }
+                R.id.radioComingSoon -> {
+                    binding.recyclerViewMovies.adapter = comingSoonMoviesAdapter
+                    viewModel.comingSoonMovies.observe(viewLifecycleOwner) { movies ->
+                        comingSoonMoviesAdapter.submitList(movies)
+                    }
+                }
+            }
+        }
     }
 
-//    private fun loadNowPlayingMovies() {
-//        client.fetchMovieList().enqueue(object : Callback<MovieResponse> {
-//            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-//                if (response.isSuccessful) {
-//                    val nowPlayingMovies = response.body()?.results ?: emptyList()
-//                    movieAdapter.updateMovies(nowPlayingMovies)
-//                } else {
-//                    // Handle API error
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-//                // Handle failure
-//            }
-//        })
-//    }
-//
-//    private fun loadComingSoonMovies() {
-//        client.fetchMovieList2().enqueue(object : Callback<MovieResponse> {
-//            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-//                if (response.isSuccessful) {
-//                    val comingSoonMovies = response.body()?.results ?: emptyList()
-//                    movieAdapter.updateMovies(comingSoonMovies)
-//                } else {
-//                    // Handle API error
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-//                // Handle failure
-//            }
-//        })
-//    }
 }

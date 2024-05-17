@@ -1,44 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:layout_width="wrap_content"
+    android:layout_height="385dp"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:paddingHorizontal="9dp">
 
-    <ImageView
-        android:id="@+id/movie_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@drawable/avengars"
-        android:layout_gravity="center"/>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="173dp"
+        android:layout_height="244dp"
+        card_view:cardCornerRadius="18dp"
+        android:layout_gravity="center"
+        card_view:cardElevation="4dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/movieImage"
+            android:layout_width="173dp"
+            android:layout_height="244dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/batman"
+            android:layout_marginBottom="16dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/movieTitle"
+        android:layout_width="174dp"
+        android:layout_height="40dp"
+        android:text="@string/avatar_2_the_way_of_water"
+        android:layout_gravity="center"
+        android:textAppearance="@style/avatar_2_th"
+        android:layout_marginBottom="12dp"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="79dp"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/movie_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:text="Avengers - Infinity War" />
-
-        <TextView
-            android:id="@+id/movie_release"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        >
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2h29m • Action, adventure, sci-fi" />
+            android:src="@drawable/star7"
+            android:layout_gravity="center_vertical"/>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/rating"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="4.0 (982)"
+            android:textAppearance="@style/some_id_2"
+            android:gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            />
 
-        </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/calendar"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:id="@+id/movieReleaseDate"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/data"
+            android:textAppearance="@style/hour_29_min"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/video"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+
+            />
+        <TextView
+            android:id="@+id/movieGenre"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Action, Sci-fi"
+            android:textAppearance="@style/gi_t_ng_phi"
+            android:layout_gravity="center_vertical"
+            />
+
+    </LinearLayout>
 </LinearLayout>

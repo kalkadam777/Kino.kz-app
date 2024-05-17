@@ -5,15 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kinokz.databinding.ItemImageBinding
+import com.example.kinokz.databinding.MovieBinding
 import com.example.kinokz.diffUtil.ImageDiffCallback
 import com.example.kinokz.model.Movie
 
-class ImageAdapter(
+class MovieSectionAdapter(
     private val onMovieClick: (Movie) -> Unit
-) : ListAdapter<Movie, ImageAdapter.ViewHolder>(ImageDiffCallback()){
+) : ListAdapter<Movie, MovieSectionAdapter.ViewHolder>(ImageDiffCallback()) {
+
     class ViewHolder(
-        val binding: ItemImageBinding,
+        val binding: MovieBinding,
         val onMovieClick: (Movie) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -28,15 +29,15 @@ class ImageAdapter(
         fun bind(movie: Movie) {
             with(binding) {
                 val imageUrl = "https://image.tmdb.org/t/p/original${movie.posterPath}"
-                Glide.with(image.context).
-                load(imageUrl).
-                into(image)
+                Glide.with(movieImage.context)
+                    .load(imageUrl)
+                    .into(movieImage)
 
-                mainTitle.text = movie.title
-                descText.text = movie.releaseDate
+                movieTitle.text = movie.title
+                movieReleaseDate.text = movie.releaseDate
                 rating.text = "${formatNumber(movie.voteAverage)} (${movie.voteCount})"
 
-                root.setOnClickListener(){
+                root.setOnClickListener {
                     onMovieClick(movie)
                 }
             }
@@ -44,7 +45,7 @@ class ImageAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = MovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding, onMovieClick)
     }
 
