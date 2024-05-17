@@ -99,4 +99,19 @@
         <item name="android:textColor">#B3B3B3</item>
     </style>
 
+    <style name="user_name">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
+    <style name="some_id_3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#DEDEDE</item>
+    </style>
+
+    <style name="my_ticket">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#F2F2F2</item>
+    </style>
+
 </resources>
