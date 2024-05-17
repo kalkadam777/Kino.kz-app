@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.kinokz.databinding.ItemImageBinding
 import com.example.kinokz.diffUtil.ImageDiffCallback
 import com.example.kinokz.model.Movie
+import com.example.kinokz.model.MovieDetails
 
 class ImageAdapter(
     private val onMovieClick: (Movie) -> Unit
@@ -27,6 +28,7 @@ class ImageAdapter(
                 descText.text = movie.releaseDate
                 rating.text = movie.voteAverage
 
+
                 root.setOnClickListener(){
                     onMovieClick(movie)
                 }
@@ -41,5 +43,6 @@ class ImageAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+
     }
 }

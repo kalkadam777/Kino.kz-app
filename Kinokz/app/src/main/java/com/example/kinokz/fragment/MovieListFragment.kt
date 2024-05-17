@@ -81,7 +81,7 @@ class MovieListFragment : Fragment() {
         findNavController().navigate(direction)
 
     }
-    }
+}
 
 
 
