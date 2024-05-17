@@ -39,7 +39,7 @@ class MovieDetailsFragment : Fragment() {
             when (state) {
                 is MovieDetailsState.Loading -> {
                     binding.progressBar1.isVisible = state.isLoading
-                    binding.contentLayout.visibility = View.GONE
+                    binding.contentLayout.isVisible = !state.isLoading
                 }
 
                 is MovieDetailsState.Success -> {
@@ -56,6 +56,12 @@ class MovieDetailsFragment : Fragment() {
         viewModel.fetchMovieDetails(args.movieId)
     }
 
+    private fun formatRuntime(runtime: Int): String {
+        val hours = runtime / 60
+        val minutes = runtime % 60
+        return "${hours}h${minutes}m"
+    }
+
     private fun updateUI(movieDetails: MovieDetails) {
         with(binding) {
             val imageUrl = "https://image.tmdb.org/t/p/original${movieDetails.backdropPath}"
@@ -65,9 +71,9 @@ class MovieDetailsFragment : Fragment() {
             movieTitle.text = movieDetails.title
             movieRating.text = movieDetails.voteAverage
             movieOverview.text = movieDetails.overview
-            movieReleaseDate.text = movieDetails.releaseDate
+            movieReleaseDate.text = "${formatRuntime(movieDetails.runtime)} • ${movieDetails.releaseDate}"
             movieRating.text = movieDetails.voteAverage
-            movieDuration.text = movieDetails.runtime.toString()
+//            movieDuration.text = formatRuntime(movieDetails.runtime)
             movieGenre.text = movieDetails.genres.first().name
             backButton.setOnClickListener {
                 requireActivity().onBackPressed() // Use requireActivity() instead of findNavController().navigateUp()

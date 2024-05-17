@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MovieFragment">
+    android:orientation="vertical"
+    android:background="@color/black">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RadioGroup
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:padding="8dp">
 
-</FrameLayout>
+        <RadioButton
+            android:id="@+id/radioNowPlaying"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Now playing"
+            android:background="@drawable/radio_button_selector_left"
+            android:textColor="@drawable/radio_button_text_selector"
+            android:textStyle="bold"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="12dp"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioComingSoon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Coming soon"
+            android:background="@drawable/radio_button_selector_right"
+            android:textColor="@drawable/radio_button_text_selector"
+            android:textStyle="bold"
+            android:button="@null"
+            android:gravity="center"
+            android:padding="12dp"/>
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMovies"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:scrollbars="vertical"/>
+</LinearLayout>
