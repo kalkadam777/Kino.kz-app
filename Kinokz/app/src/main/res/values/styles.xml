@@ -33,6 +33,11 @@
         <item name="android:textColor">#F2F2F2</item>
     </style>
 
+    <style name="some_id_2">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#DEDEDE</item>
+    </style>
+
 
     <style name="avatar_2_th">
         <item name="android:textSize">16sp</item>
