@@ -9,4 +9,5 @@
     <color name="bottom_nav_background">#000000</color>
     <color name="yellow">#FCC434</color>
     <color name="gray">#1C1C1C</color>
+    <color name="light_gray">#8C8C8C</color>
 </resources>

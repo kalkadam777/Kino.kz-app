@@ -4,6 +4,7 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="bottomNavigationStyle">@style/CustomBottomNavigationStyle</item>
+        <item name="searchViewStyle">@style/CustomSearchViewStyle</item>
     </style>
 
     <style name="Theme.Kinokz" parent="Base.Theme.Kinokz" >
@@ -15,5 +16,12 @@
         <item name="itemTextColor">@drawable/bottom_nav_colors</item>
         <item name="itemRippleColor">@android:color/transparent</item>
         <item name="backgroundTint">@color/bottom_nav_background</item>
+    </style>
+
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@color/gray</item>
+        <item name="searchIcon">@drawable/search_icon</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/light_gray</item>
     </style>
 </resources>
