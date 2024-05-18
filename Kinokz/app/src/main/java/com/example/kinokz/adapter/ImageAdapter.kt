@@ -41,6 +41,7 @@ class ImageAdapter(
                 root.setOnClickListener(){
                     onMovieClick(movie)
                 }
+
             }
         }
     }

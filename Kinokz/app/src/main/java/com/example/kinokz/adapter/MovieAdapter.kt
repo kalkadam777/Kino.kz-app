@@ -95,6 +95,7 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit): ListAdapter<Secti
             binding.recyclerViewHorizontal.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             binding.recyclerViewHorizontal.adapter = adapter
             adapter.submitList(section.movies)
+
         }
     }
 
