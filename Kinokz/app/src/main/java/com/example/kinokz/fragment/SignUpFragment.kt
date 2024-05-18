@@ -1,5 +1,3 @@
-package com.example.kinokz
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.kinokz.R
 import com.example.kinokz.databinding.FragmentSignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -48,7 +47,7 @@ class SignUpFragment : Fragment() {
                 if (task.isSuccessful) {
                     val user = task.result?.user
                     saveAdditionalUserData(user?.uid, name)
-                    fetchUsernameAndNavigate(user?.uid)  // Fetch data and navigate
+                    findNavController().navigate(R.id.action_sign_up_fragment_to_profile_fragment)
                 } else {
                     Toast.makeText(
                         requireContext(),
@@ -62,9 +61,7 @@ class SignUpFragment : Fragment() {
     private fun saveAdditionalUserData(userId: String?, name: String) {
         if (userId != null) {
             val databaseReference = FirebaseDatabase.getInstance().getReference("users")
-            val userData = mapOf(
-                "name" to name
-            )
+            val userData = mapOf("name" to name)
             databaseReference.child(userId).setValue(userData)
                 .addOnSuccessListener {
                     // Data successfully saved
@@ -73,33 +70,6 @@ class SignUpFragment : Fragment() {
                     Toast.makeText(
                         requireContext(),
                         "Failed to save user data: ${it.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-        }
-    }
-
-    private fun fetchUsernameAndNavigate(userId: String?) {
-        if (userId != null) {
-            val databaseReference = FirebaseDatabase.getInstance().getReference("users")
-            databaseReference.child(userId).get()
-                .addOnSuccessListener { snapshot ->
-                    val username = snapshot.child("name").getValue(String::class.java)
-                    if (username != null) {
-                        val action = SignUpFragmentDirections.actionSignUpFragmentToProfileFragment(username)
-                        findNavController().navigate(action)
-                    } else {
-                        Toast.makeText(
-                            requireContext(),
-                            "Failed to fetch user data.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-                .addOnFailureListener {
-                    Toast.makeText(
-                        requireContext(),
-                        "Failed to fetch user data: ${it.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

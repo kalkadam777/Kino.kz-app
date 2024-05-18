@@ -53,30 +53,20 @@
     </fragment>
 
     <fragment android:id="@+id/sign_in_fragment"
-        android:name="com.example.kinokz.SignInFragment">
+        android:name="SignInFragment">
 
         <action
             android:id="@+id/action_sign_in_fragment_to_profile_fragment"
-            app:destination="@id/navigation_profile">
-
-        <argument
-            android:name="username"
-            app:argType="string" />
-
-        </action>
+            app:destination="@id/navigation_profile"/>
 
     </fragment>
 
     <fragment android:id="@+id/sign_up_fragment"
-        android:name="com.example.kinokz.SignUpFragment">
+        android:name="SignUpFragment">
 
         <action
             android:id="@+id/action_sign_up_fragment_to_profile_fragment"
             app:destination="@id/navigation_profile">
-
-        <argument
-            android:name="username"
-            app:argType="string" />
 
         </action>
 
@@ -96,13 +86,9 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.kinokz.fragment.ProfileFragment"
+        android:name="ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile">
-
-        <argument
-            android:name="username"
-            app:argType="string" />
 
     </fragment>
 

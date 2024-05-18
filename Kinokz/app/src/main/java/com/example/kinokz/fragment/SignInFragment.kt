@@ -5,16 +5,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.kinokz.SignInFragmentDirections
+import com.example.kinokz.R
 import com.example.kinokz.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 
 class SignInFragment : Fragment() {
 
     private lateinit var binding: FragmentSignInBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var database: FirebaseDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,11 +25,11 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
 
         // Check if user is already authenticated
         if (auth.currentUser != null) {
-            fetchUsernameAndNavigate(auth.currentUser?.uid)
+            // If user is already authenticated, navigate to ProfileFragment
+            findNavController().navigate(R.id.action_sign_in_fragment_to_profile_fragment)
         }
 
         binding.signInBtn.setOnClickListener {
@@ -49,33 +47,14 @@ class SignInFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    fetchUsernameAndNavigate(auth.currentUser?.uid)
+                    findNavController().navigate(R.id.action_sign_in_fragment_to_profile_fragment)
+
                 } else {
                     Toast.makeText(requireContext(), "Login failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    private fun fetchUsernameAndNavigate(userId: String?) {
-        if (userId != null) {
-            val userRef = database.getReference("Users").child(userId)
-            userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val username = snapshot.child("name").getValue(String::class.java)
-                    if (username != null) {
-                        val action = SignInFragmentDirections.actionSignInFragmentToProfileFragment(username)
-                        findNavController().navigate(action)
-                    } else {
-                        Toast.makeText(requireContext(), "Failed to fetch user data.", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(requireContext(), "Failed to fetch user data: ${error.message}", Toast.LENGTH_SHORT).show()
-                }
-            })
-        }
-    }
 }
 
 
