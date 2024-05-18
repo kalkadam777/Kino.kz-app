@@ -36,7 +36,7 @@ class MovieFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
         movieAdapter = MovieSectionAdapter { movie -> /* Handle movie click */ }
-        comingSoonMoviesAdapter = ComingSoonMoviesAdapter()
+        comingSoonMoviesAdapter = ComingSoonMoviesAdapter{}
 
         binding.recyclerViewMovies.layoutManager = GridLayoutManager(context, 2)
         // Устанавливаем начальное состояние

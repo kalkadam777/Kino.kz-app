@@ -73,7 +73,6 @@ class MovieDetailsFragment : Fragment() {
             movieOverview.text = movieDetails.overview
             movieReleaseDate.text = "${formatRuntime(movieDetails.runtime)} • ${movieDetails.releaseDate}"
             movieRating.text = movieDetails.voteAverage
-//            movieDuration.text = formatRuntime(movieDetails.runtime)
             movieGenre.text = movieDetails.genres.first().name
             backButton.setOnClickListener {
                 requireActivity().onBackPressed() // Use requireActivity() instead of findNavController().navigateUp()

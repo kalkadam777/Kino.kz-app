@@ -10,7 +10,6 @@
         android:name="com.example.kinokz.fragment.MovieListFragment"
         android:label="MovieListFragment"
         >
-
         <action
             android:id="@+id/action_movie_list_fragment_to_movie_details_fragment"
             app:destination="@id/movie_details_fragment" />
@@ -45,10 +44,43 @@
         android:name="com.example.kinokz.fragment.LoginFragment">
 
         <action
-            android:id="@+id/action_login_fragment_to_movie_list_fragment"
-            app:destination="@id/movie_list_fragment" />
+            android:id="@+id/action_login_fragment_to_sign_up_fragment"
+            app:destination="@id/sign_up_fragment" />
+
+        <action
+            android:id="@+id/action_login_fragment_to_sign_in_fragment"
+            app:destination="@id/sign_in_fragment" />
     </fragment>
 
+    <fragment android:id="@+id/sign_in_fragment"
+        android:name="com.example.kinokz.SignInFragment">
+
+        <action
+            android:id="@+id/action_sign_in_fragment_to_profile_fragment"
+            app:destination="@id/navigation_profile">
+
+        <argument
+            android:name="username"
+            app:argType="string" />
+
+        </action>
+
+    </fragment>
+
+    <fragment android:id="@+id/sign_up_fragment"
+        android:name="com.example.kinokz.SignUpFragment">
+
+        <action
+            android:id="@+id/action_sign_up_fragment_to_profile_fragment"
+            app:destination="@id/navigation_profile">
+
+        <argument
+            android:name="username"
+            app:argType="string" />
+
+        </action>
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_ticket"
@@ -66,6 +98,14 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.kinokz.fragment.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+
+        <argument
+            android:name="username"
+            app:argType="string" />
+
+    </fragment>
+
+
 
 </navigation>

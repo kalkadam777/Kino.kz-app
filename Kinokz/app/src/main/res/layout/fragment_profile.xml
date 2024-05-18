@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/user_name"
                     android:text="Daulet"
+                    android:textColor="@color/white"
                     android:layout_marginBottom="8dp"/>
 
                 <LinearLayout

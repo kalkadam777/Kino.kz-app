@@ -26,14 +26,20 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding){
-            signInBtn.setOnClickListener{
-//                val login = loginEt.text.toString()
-//                val password = passwordEt.text.toString()
-
+            signUpBtn.setOnClickListener{
                 UserData(requireContext()).setAuthorized()
 
-                val direction = LoginFragmentDirections.actionLoginFragmentToMovieListFragment()
+                val direction = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
                 findNavController().navigate(direction)
+            }
+
+
+            signInBtn.setOnClickListener{
+                UserData(requireContext()).setAuthorized()
+
+                val direction = LoginFragmentDirections.actionLoginFragmentToSignInFragment()
+                findNavController().navigate(direction)
+
             }
         }
     }

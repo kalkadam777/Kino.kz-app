@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "558305046065",
+    "firebase_url": "https://kino-e5fb6-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "kino-e5fb6",
+    "storage_bucket": "kino-e5fb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558305046065:android:50aeab5860dccce3a06f10",
+        "android_client_info": {
+          "package_name": "com.example.kinokz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNCDoMIZcxVWFLATInDePefAhruwjSky0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

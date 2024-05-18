@@ -57,7 +57,7 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit): ListAdapter<Secti
             }
             TYPE_COMING_SOON -> {
                 val binding = SectionComingSoonBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return ComingSoonViewHolder(binding)
+                return ComingSoonViewHolder(binding, onMovieClick)
             }
             TYPE_PROMO -> {
                 val binding = PromoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -103,9 +103,9 @@ class MovieAdapter(private val onMovieClick: (Movie) -> Unit): ListAdapter<Secti
         }
     }
 
-    class ComingSoonViewHolder(private val binding: SectionComingSoonBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ComingSoonViewHolder(private val binding: SectionComingSoonBinding, private val onMovieClick: (Movie) -> Unit) : RecyclerView.ViewHolder(binding.root) {
         fun bind(section: ComingSoonSection) {
-            val adapter = ComingSoonMoviesAdapter()
+            val adapter = ComingSoonMoviesAdapter(onMovieClick)
             binding.recyclerViewHorizontal.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
             binding.recyclerViewHorizontal.adapter = adapter
             adapter.submitList(section.movies)

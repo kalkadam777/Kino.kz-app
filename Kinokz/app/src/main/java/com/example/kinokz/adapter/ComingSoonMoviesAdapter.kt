@@ -9,9 +9,13 @@ import com.example.kinokz.databinding.ComingSoonMovieItemBinding
 import com.example.kinokz.diffUtil.ComingSoonDiffCallback
 import com.example.kinokz.model.Movie
 
-class ComingSoonMoviesAdapter : ListAdapter<Movie, ComingSoonMoviesAdapter.MovieViewHolder>(ComingSoonDiffCallback()) {
+class ComingSoonMoviesAdapter (
+    private val onMovieClick: (Movie) -> Unit
+): ListAdapter<Movie, ComingSoonMoviesAdapter.MovieViewHolder>(ComingSoonDiffCallback()) {
 
-    class MovieViewHolder(private val binding: ComingSoonMovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    class MovieViewHolder(private val binding: ComingSoonMovieItemBinding, val onMovieClick: (Movie) -> Unit) : RecyclerView.ViewHolder(binding.root) {
+
 
         fun bind(movie: Movie) {
             with(binding) {
@@ -23,13 +27,17 @@ class ComingSoonMoviesAdapter : ListAdapter<Movie, ComingSoonMoviesAdapter.Movie
 
                 movieTitle.text = movie.title
                 movieReleaseDate.text = movie.releaseDate
+
+                root.setOnClickListener(){
+                    onMovieClick(movie)
+                }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding = ComingSoonMovieItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MovieViewHolder(binding)
+        return MovieViewHolder(binding, onMovieClick)
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
